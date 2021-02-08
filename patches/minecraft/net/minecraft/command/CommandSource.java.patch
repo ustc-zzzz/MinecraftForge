@@ -1,0 +1,17 @@
+--- a/net/minecraft/command/CommandSource.java
++++ b/net/minecraft/command/CommandSource.java
+@@ -145,6 +145,14 @@
+       return this.field_197044_f >= p_197034_1_;
+    }
+ 
++   public boolean hasPermission(String node) {
++      if (this.field_197041_c instanceof ServerPlayerEntity) {
++         ServerPlayerEntity player = (ServerPlayerEntity) this.field_197041_c;
++         return net.minecraftforge.server.permission.PermissionAPI.hasPermission(player, node);
++      }
++      return this.func_197034_c(4);
++   }
++
+    public Vector3d func_197036_d() {
+       return this.field_197042_d;
+    }
